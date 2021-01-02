@@ -2,5 +2,6 @@
     <string name="app_name">ViReGame</string>
     <string name="start_menu">Главное меню</string>
     <string name="start_game">Начать</string>
-    <string name="first">Какой-то текст</string>
+    <string name="first">Ваша история как короля начианается. Пришло ваше время показать
+    ваше величие всему королевству.</string>
 </resources>
