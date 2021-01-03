@@ -14,4 +14,9 @@ public class Stats { // store our data in percents
         money = arr[1];
         education = arr[2];
     }
+    public void changeValue(Stats stats) {
+        mood += stats.mood;
+        money += stats.money;
+        education += stats.education;
+    }
 }

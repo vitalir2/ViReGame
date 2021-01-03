@@ -1,10 +1,16 @@
 package mygame.vitalir.mysite.com.viregame;
 
+import android.icu.util.ICUUncheckedIOException;
+
 public class Story { // FIXME
     private Card[] cardDeck;
-    private int amountOfTurns;
+    private final int amountOfTurns;
+    private int currentTurn;
     Story(String[] cardNames, String[][] cardChoices,
           int[][] cardChoicesInt,  int storyTime) {
+        currentTurn = 0;
+        cardDeck = new Card[storyTime];
+        amountOfTurns = storyTime;
         fillCardDeck(cardNames, cardChoices, cardChoicesInt, storyTime);
     }
     public void fillCardDeck(String[] cardNames, String[][] cardChoices,
@@ -20,13 +26,18 @@ public class Story { // FIXME
             cardDeck[i].third_choice_influence = new Stats(cardChoicesInt[i+2]);
         }
     }
-    public Card getNextCard() {
-        return cardDeck[amountOfTurns];
+    public Card getCurrentCard() {
+        return cardDeck[currentTurn];
+    }
+    public void nextTurn() {
+        if (this.notEnd()) {
+            ++currentTurn;
+        }
     }
     public boolean notEnd() {
-        return true;
+        return currentTurn < amountOfTurns;
     }
-    public int getAmountOfTurns() {
-        return amountOfTurns;
+    public int getCurrentTurn() {
+        return currentTurn;
     }
 }

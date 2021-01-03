@@ -4,4 +4,6 @@
     <string name="start_game">Начать</string>
     <string name="first">Ваша история как короля начианается. Пришло ваше время показать
     ваше величие всему королевству.</string>
+    <string name="string_final">Конечная строка</string>
+    <string name="return_main">Вернуться в главное меню</string>
 </resources>
