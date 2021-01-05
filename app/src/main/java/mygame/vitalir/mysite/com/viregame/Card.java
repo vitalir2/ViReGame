@@ -1,6 +1,6 @@
 package mygame.vitalir.mysite.com.viregame;
 
-public class Card { // FIXME
+public class Card {
     public String first_choice_text;
     public String second_choice_text;
     public String third_choice_text;

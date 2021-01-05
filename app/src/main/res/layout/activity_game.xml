@@ -20,7 +20,6 @@
         app:layout_constraintTop_toBottomOf="@id/game_text"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/button_second"
-        android:text="GetHealth"
         style="@style/ButtonView"
         />
     <Button
@@ -30,7 +29,6 @@
         app:layout_constraintTop_toBottomOf="@id/game_text"
         app:layout_constraintLeft_toRightOf="@id/button_first"
         app:layout_constraintRight_toLeftOf="@id/button_third"
-        android:text="GetSecond"
         style="@style/ButtonView"
         />
     <Button
@@ -40,8 +38,70 @@
         app:layout_constraintTop_toBottomOf="@id/game_text"
         app:layout_constraintLeft_toRightOf="@id/button_second"
         app:layout_constraintRight_toRightOf="parent"
-        android:text="GetThird"
         style="@style/ButtonView"
+        />
+    <TextView
+        android:id="@+id/resource1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/button_first"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/resource2"
+        android:text="@string/resource1"
+        style="@style/ResourceText"
+        />
+    <TextView
+        android:id="@+id/resource2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/button_second"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/resource1"
+        app:layout_constraintRight_toLeftOf="@id/resource3"
+        android:text="@string/resource2"
+        style="@style/ResourceText"
+        />
+    <TextView
+        android:id="@+id/resource3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/button_third"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/resource2"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="@string/resource3"
+        style="@style/ResourceText"
+        />
+    <ImageView
+        android:id="@+id/image1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/resource1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/image2"
+        android:src="@drawable/ic_heart"
+        android:contentDescription="@string/resource1"
+        />
+    <ImageView
+        android:id="@+id/image2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/resource2"
+        app:layout_constraintLeft_toRightOf="@id/image1"
+        app:layout_constraintRight_toLeftOf="@id/image3"
+        android:src="@drawable/ic_tool"
+        android:contentDescription="@string/resource2"
+        />
+    <ImageView
+        android:id="@+id/image3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/resource2"
+        app:layout_constraintLeft_toRightOf="@id/image2"
+        app:layout_constraintRight_toRightOf="parent"
+        android:src="@drawable/ic_money"
+        android:contentDescription="@string/resource3"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
