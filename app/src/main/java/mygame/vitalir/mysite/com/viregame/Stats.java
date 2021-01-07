@@ -26,4 +26,8 @@ public class Stats { // store our data in percents
         stat2 += stats.stat2;
         stat3 += stats.stat3;
     }
+    public boolean isAlive() {
+        return stat1 > 0 && stat1 < 100 && stat2 > 0 && stat2 < 100
+                && stat3 > 0 && stat3 < 100;
+    }
 }

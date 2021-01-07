@@ -31,19 +31,19 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
         //Story story = new Story(cardNames, cardChoiceTexts, cardChoiceInfluences, ourStoryTime);
-        Story story = new Story(10);
-        story.generateRandomDeck(10);
-        Stats player = new Stats();
-        questDescription = (TextView)findViewById(R.id.game_text);
-        button_first = (Button)findViewById(R.id.button_first);
-        button_second = (Button)findViewById(R.id.button_second);
-        button_third = (Button)findViewById(R.id.button_third);
-        stat_first = (TextView)findViewById(R.id.resource1);
-        stat_second = (TextView)findViewById(R.id.resource2);
-        stat_third = (TextView)findViewById(R.id.resource3);
+        Story story = new Story(new Stats(), 5);
+        story.generateRandomDeck(5);
+        questDescription = findViewById(R.id.game_text);
+        button_first = findViewById(R.id.button_first);
+        button_second = findViewById(R.id.button_second);
+        button_third = findViewById(R.id.button_third);
+        stat_first = findViewById(R.id.resource1);
+        stat_second = findViewById(R.id.resource2);
+        stat_third = findViewById(R.id.resource3);
         Card currentCard = story.getCurrentCard();
         setText(currentCard.name, currentCard.first_choice_text,
                 currentCard.second_choice_text, currentCard.third_choice_text);
+        Stats player = story.getPlayer();
         changeStats(player);
         View.OnClickListener listener = new View.OnClickListener() {
             @Override
@@ -57,9 +57,7 @@ public class GameActivity extends AppCompatActivity {
                 } else if (id == R.id.button_third) {
                     player.changeValue(currentCard.third_choice_influence);
                 }
-                //Toast.makeText(GameActivity.this, R.string.app_name, Toast.LENGTH_SHORT).show();
                 story.nextTurn();
-                //Toast.makeText(GameActivity.this, Integer.valueOf(story.getCurrentTurn()).toString(), Toast.LENGTH_SHORT).show();
                 if (story.notEnd()) {
                     currentCard = story.getCurrentCard();
                     setText(currentCard.name, currentCard.first_choice_text,
@@ -67,6 +65,8 @@ public class GameActivity extends AppCompatActivity {
                     changeStats(player);
                 } else {
                     Intent intent = new Intent(GameActivity.this, EndActivity.class);
+                    intent.putExtra("CurrentTurn", story.getCurrentTurn() + 1);
+                    intent.putExtra("isDied", story.getCurrentTurn() != story.getAmountOfTurns());
                     startActivity(intent);
                 }
              }

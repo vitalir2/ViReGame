@@ -2,21 +2,24 @@ package mygame.vitalir.mysite.com.viregame;
 
 import java.util.Random;
 
-public class Story { // TODO: Many features will be implemented later
-    private Card[] cardDeck;
+public class Story {
+    private final Card[] cardDeck;
+    private final Stats player;
     private final int amountOfTurns;
     private int currentTurn;
     Story(String[] cardNames, String[][] cardChoices,
-          int[][] cardChoicesInt,  int storyTime) {
+          int[][] cardChoicesInt,  Stats player, int storyTime) {
         currentTurn = 0;
         cardDeck = new Card[storyTime];
+        this.player = player;
         amountOfTurns = storyTime;
         fillCardDeck(cardNames, cardChoices, cardChoicesInt, storyTime);
     }
 
-    public Story(int storyTime) {
+    public Story(Stats player, int storyTime) {
         currentTurn = 0;
         cardDeck = new Card[storyTime];
+        this.player = player;
         amountOfTurns = storyTime;
     }
 
@@ -36,7 +39,7 @@ public class Story { // TODO: Many features will be implemented later
     public Card getCurrentCard() {
         return cardDeck[currentTurn];
     }
-    public void generateRandomDeck(int size) {
+    public void generateRandomDeck(int size) { // for testing
         Random random = new Random();
         final int asciiSym = 97;
         final int seed = 100;
@@ -62,9 +65,14 @@ public class Story { // TODO: Many features will be implemented later
         }
     }
     public boolean notEnd() {
-        return currentTurn < amountOfTurns;
+        return currentTurn < amountOfTurns && player.isAlive();
     }
     public int getCurrentTurn() {
         return currentTurn;
+    }
+    public int getAmountOfTurns() { return amountOfTurns; }
+
+    public Stats getPlayer() {
+        return player;
     }
 }
