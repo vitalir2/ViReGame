@@ -11,11 +11,38 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class GameActivity extends AppCompatActivity {
-    private final int ourStoryTime = 2;
-    private final String[] cardNames = {"First", "Second"};
-    private final String[][] cardChoiceTexts = {{"1", "2", "3"}, {"1", "2", "3"}};
-    private final int[][] cardChoiceInfluences = {{25, 25, 0}, {0, 0, 10}, {-25, 10, 10},
-            {0, -25, 25}, {40, -25, -25}, {10, 10, 10}};
+    private final int ourStoryTime = 11;
+    private final String[] cardNames = {"Это начало пути. Вашему персонажу предстоит выбраться " +
+            "из темного подземелья, где каждый ваш шаг решает вашу судьбу.",
+            "Вы находитесь в самой нижней части подземелья. Вы находите лестницу к" +
+                    " следующему этажу, но путь преграждает огромная крыса",
+            "Второй выбор"
+    , "Третий выбор", "Четвертый выбор", "Пятый выбор", "Шестой выбор", "Седьмой выбор", "Восьмой выбор"
+    , "Девятый выбор", "Финальный выбор"};
+    private final String[][] cardChoiceTexts = {{"Хорошо", "Хорошо", "Хорошо"},
+            {"Попробовать победить эту крысу", "Подкупить крысу", "Подождать, может быть она уйдет"},
+            {"0", "1", "2"},
+            {"0", "1", "2"},
+            {"0", "1", "2"},
+            {"0", "1", "2"},
+            {"0", "1", "2"},
+            {"0", "1", "2"},
+            {"0", "1", "3"},
+            {"0", "1", "2"},
+            {"0", "1", "2"},
+            {"Final", "Final", "Final"}};
+    // for each card we have 3 choices -> 3 sub_arrays which converts into Stats in the future
+    private final int[][] cardChoiceInfluences = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0},
+            {0, -10, 25}, {0, 0, -25}, {-15, 10, 0},
+            {0, 0, 0}, {0, 0, 0}, {0, 0, 0},
+            {0, 0, 0}, {0, 0, 0}, {0, 0, 0},
+            {0, 0, 0}, {0, 0, 0}, {0, 0, 0},
+            {0, 0, 0}, {0, 0, 0}, {0, 0, 0},
+            {0, 0, 0}, {0, 0, 0}, {0, 0, 0},
+            {0, 0, 0}, {0, 0, 0}, {0, 0, 0},
+            {0, 0, 0}, {0, 0, 0}, {0, 0, 0},
+            {0, 0, 0}, {0, 0, 0}, {0, 0, 0},
+            {0, 0, 0}, {0, 0, 0}, {0, 0, 0}};
 
     private Button button_first;
     private Button button_second;
@@ -30,9 +57,10 @@ public class GameActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
-        //Story story = new Story(cardNames, cardChoiceTexts, cardChoiceInfluences, ourStoryTime);
-        Story story = new Story(new Stats(), 5);
-        story.generateRandomDeck(5);
+        Stats player = new Stats();
+        Story story = new Story(cardNames, cardChoiceTexts, cardChoiceInfluences, player, ourStoryTime);
+        //Story story = new Story(new Stats(), 5);
+        //story.generateRandomDeck(5);
         questDescription = findViewById(R.id.game_text);
         button_first = findViewById(R.id.button_first);
         button_second = findViewById(R.id.button_second);
@@ -43,7 +71,6 @@ public class GameActivity extends AppCompatActivity {
         Card currentCard = story.getCurrentCard();
         setText(currentCard.name, currentCard.first_choice_text,
                 currentCard.second_choice_text, currentCard.third_choice_text);
-        Stats player = story.getPlayer();
         changeStats(player);
         View.OnClickListener listener = new View.OnClickListener() {
             @Override
@@ -83,8 +110,8 @@ public class GameActivity extends AppCompatActivity {
     }
     @SuppressLint("SetTextI18n")
     private void changeStats(Stats player) {
-        stat_first.setText(Integer.valueOf(player.stat1).toString());
-        stat_second.setText(Integer.valueOf(player.stat2).toString());
-        stat_third.setText(Integer.valueOf(player.stat3).toString());
+        stat_first.setText(Integer.valueOf(player.health).toString());
+        stat_second.setText(Integer.valueOf(player.mood).toString());
+        stat_third.setText(Integer.valueOf(player.money).toString());
     }
 }

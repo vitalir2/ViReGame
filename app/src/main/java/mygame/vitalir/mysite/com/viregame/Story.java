@@ -25,15 +25,17 @@ public class Story {
 
     public void fillCardDeck(String[] cardNames, String[][] cardChoices,
                              int[][] cardChoicesInt, int size) {
+        int x = 0;
         for (int i = 0; i < size; ++i) {
             cardDeck[i] = new Card();
             cardDeck[i].name = cardNames[i];
             cardDeck[i].first_choice_text = cardChoices[i][0];
             cardDeck[i].second_choice_text = cardChoices[i][1];
             cardDeck[i].third_choice_text = cardChoices[i][2];
-            cardDeck[i].first_choice_influence = new Stats(cardChoicesInt[i]);
-            cardDeck[i].second_choice_influence = new Stats(cardChoicesInt[i+1]);
-            cardDeck[i].third_choice_influence = new Stats(cardChoicesInt[i+2]);
+            cardDeck[i].first_choice_influence = new Stats(cardChoicesInt[x]);
+            cardDeck[i].second_choice_influence = new Stats(cardChoicesInt[x+1]);
+            cardDeck[i].third_choice_influence = new Stats(cardChoicesInt[x+2]);
+            x += 3;
         }
     }
     public Card getCurrentCard() {
@@ -64,8 +66,11 @@ public class Story {
             ++currentTurn;
         }
     }
+
+    // It'll be better if I create different endings and different stories which depends on
+    // what was your past choices but it is homework project so idk if I'll improve this project.
     public boolean notEnd() {
-        return currentTurn < amountOfTurns && player.isAlive();
+        return currentTurn < amountOfTurns && player.isAlive() && player.isNotMonster();
     }
     public int getCurrentTurn() {
         return currentTurn;

@@ -6,12 +6,12 @@
     ваше величие всему королевству.</string>
     <string name="string_final">Конечная строка</string>
     <string name="return_main">Вернуться в главное меню</string>
-    <string name="resource1">Ресурс1</string>
-    <string name="resource2">Ресурс2</string>
-    <string name="resource3">Ресурс3</string>
-    <string name="text_result1">Вы прожили\u0020</string>
+    <string name="resource1">Жизнь</string>
+    <string name="resource2">Напряжение</string>
+    <string name="resource3">Деньги</string>
+    <string name="text_result1">Ваша жизнь оборвалась. Вы прожили\u0020</string>
     <string name="text_result2_1">\u0020ход</string>
     <string name="text_result2_2">\u0020хода</string>
     <string name="text_result2_3">\u0020ходов</string>
-    <string name="text_alive">Вы смогли прожить на протяжении долгих лет. Поздравляем!</string>
+    <string name="text_alive">Вы смогли прожить до конца истории. Поздравляем!</string>
 </resources>
