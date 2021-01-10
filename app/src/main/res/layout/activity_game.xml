@@ -91,7 +91,7 @@
         app:layout_constraintTop_toBottomOf="@id/resource2"
         app:layout_constraintLeft_toRightOf="@id/image1"
         app:layout_constraintRight_toLeftOf="@id/image3"
-        android:src="@drawable/ic_tool"
+        android:src="@drawable/ic_mood"
         android:contentDescription="@string/resource2"
         />
     <ImageView

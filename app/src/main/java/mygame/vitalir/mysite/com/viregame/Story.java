@@ -8,12 +8,12 @@ public class Story {
     private final int amountOfTurns;
     private int currentTurn;
     Story(String[] cardNames, String[][] cardChoices,
-          int[][] cardChoicesInt,  Stats player, int storyTime) {
+          int[][] cardChoicesInt, String[][] cardChoicesResult, Stats player, int storyTime) {
         currentTurn = 0;
         cardDeck = new Card[storyTime];
         this.player = player;
         amountOfTurns = storyTime;
-        fillCardDeck(cardNames, cardChoices, cardChoicesInt, storyTime);
+        fillCardDeck(cardNames, cardChoices, cardChoicesInt, cardChoicesResult, storyTime);
     }
 
     public Story(Stats player, int storyTime) {
@@ -24,17 +24,16 @@ public class Story {
     }
 
     public void fillCardDeck(String[] cardNames, String[][] cardChoices,
-                             int[][] cardChoicesInt, int size) {
+                             int[][] cardChoicesInt, String[][] cardChoicesResult, int size) {
         int x = 0;
         for (int i = 0; i < size; ++i) {
             cardDeck[i] = new Card();
             cardDeck[i].name = cardNames[i];
-            cardDeck[i].first_choice_text = cardChoices[i][0];
-            cardDeck[i].second_choice_text = cardChoices[i][1];
-            cardDeck[i].third_choice_text = cardChoices[i][2];
-            cardDeck[i].first_choice_influence = new Stats(cardChoicesInt[x]);
-            cardDeck[i].second_choice_influence = new Stats(cardChoicesInt[x+1]);
-            cardDeck[i].third_choice_influence = new Stats(cardChoicesInt[x+2]);
+            for (int j = 0; j < Card.numberOfChoices; ++j) {
+                cardDeck[i].choice_text[j] = cardChoices[i][j];
+                cardDeck[i].choice_influence[j] = new Stats(cardChoicesInt[x+j]);
+                cardDeck[i].choice_result[j] = cardChoicesResult[i][j];
+            }
             x += 3;
         }
     }
@@ -53,12 +52,11 @@ public class Story {
             int randomInt = random.nextInt(chars.length);
             cardDeck[i] = new Card();
             cardDeck[i].name = chars[randomInt];
-            cardDeck[i].first_choice_text = chars[randomInt];
-            cardDeck[i].second_choice_text = chars[randomInt];
-            cardDeck[i].third_choice_text = chars[randomInt];
-            cardDeck[i].first_choice_influence = new Stats(randomInt, randomInt, randomInt);
-            cardDeck[i].second_choice_influence = new Stats(randomInt, randomInt, randomInt);
-            cardDeck[i].third_choice_influence = new Stats(randomInt, randomInt, randomInt);
+            for (int j = 0; j < Card.numberOfChoices; ++j) {
+                cardDeck[i].choice_text[j] = chars[randomInt];
+                cardDeck[i].choice_influence[j] = new Stats(randomInt, randomInt, randomInt);
+                cardDeck[i].choice_result[j] = chars[randomInt];
+            }
         }
     }
     public void nextTurn() {

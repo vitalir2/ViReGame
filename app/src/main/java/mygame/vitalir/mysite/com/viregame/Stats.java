@@ -1,7 +1,7 @@
 package mygame.vitalir.mysite.com.viregame;
 
 public class Stats { // store our data in percents
-    public int health; // life
+    public int health;
     public int mood;
     public int money;
     Stats() {
@@ -30,7 +30,7 @@ public class Stats { // store our data in percents
     // all stats < 100 because if we have them >= 100 => we transform
     // into a monster of this dungeon
     public boolean isAlive() {
-        return health > 0  && mood > 0 && money > 0;
+        return health > 0 && mood > 0 && money > 0;
     }
 
     public boolean isNotMonster() {

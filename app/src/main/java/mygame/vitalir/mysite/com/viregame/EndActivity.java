@@ -1,9 +1,11 @@
 package mygame.vitalir.mysite.com.viregame;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -16,7 +18,7 @@ public class EndActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_end);
-        button_return = findViewById(R.id.button_return);
+        button_return = (Button)findViewById(R.id.button_return);
         textView = findViewById(R.id.text_final);
         Intent intent = getIntent();
         int numberOfTurns = intent.getIntExtra("CurrentTurn", 0);
@@ -36,12 +38,13 @@ public class EndActivity extends AppCompatActivity {
             finalText += getString(R.string.text_alive);
         }
         textView.setText(finalText);
-        button_return.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(EndActivity.this, MainActivity.class);
-                startActivity(i);
-            }
+        button_return.setOnClickListener(v -> {
+            Intent i = new Intent(this, MainActivity.class);
+            startActivity(i);
         });
+    }
+
+    @Override
+    public void onBackPressed() {
     }
 }

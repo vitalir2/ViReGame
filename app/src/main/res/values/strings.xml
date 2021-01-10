@@ -5,9 +5,10 @@
     <string name="first">Ваша история как короля начианается. Пришло ваше время показать
     ваше величие всему королевству.</string>
     <string name="string_final">Конечная строка</string>
-    <string name="return_main">Вернуться в главное меню</string>
+    <string name="button_return">Вернуться в главное меню</string>
+    <string name="button_exit">Выход</string>
     <string name="resource1">Жизнь</string>
-    <string name="resource2">Напряжение</string>
+    <string name="resource2">Настроение</string>
     <string name="resource3">Деньги</string>
     <string name="text_result1">Ваша жизнь оборвалась. Вы прожили\u0020</string>
     <string name="text_result2_1">\u0020ход</string>
