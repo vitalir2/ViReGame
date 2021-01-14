@@ -35,7 +35,7 @@ public class EndActivity extends AppCompatActivity {
                 finalText += getString(R.string.text_result2_3);
             }
         } else {
-            finalText += getString(R.string.text_alive);
+            finalText += intent.getStringExtra("FinalTextAdding");
         }
         textView.setText(finalText);
         button_return.setOnClickListener(v -> {

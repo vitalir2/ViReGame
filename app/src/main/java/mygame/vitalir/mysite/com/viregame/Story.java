@@ -23,6 +23,15 @@ public class Story {
         amountOfTurns = storyTime;
     }
 
+    public Story(StoryData storyData, Stats player) {
+        currentTurn = 0;
+        cardDeck = new Card[storyData.storyTime];
+        this.player = player;
+        amountOfTurns = storyData.storyTime;
+        fillCardDeck(storyData.cardNames, storyData.cardChoiceTexts, storyData.cardChoiceInfluences,
+                storyData.cardChoiceResults, storyData.storyTime);
+    }
+
     public void fillCardDeck(String[] cardNames, String[][] cardChoices,
                              int[][] cardChoicesInt, String[][] cardChoicesResult, int size) {
         int x = 0;
